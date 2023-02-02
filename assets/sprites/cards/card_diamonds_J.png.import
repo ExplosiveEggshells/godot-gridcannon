@@ -1,0 +1,19 @@
+[remap]
+
+importer="texture_atlas"
+type="Texture"
+path="res://.import/card_diamonds_J.png-59cdd1bd6890ad4976f8998dfef7f617.res"
+group_file="res://assets/atlases/card_atlas.png"
+valid=true
+[deps]
+
+
+source_file="res://assets/sprites/cards/card_diamonds_J.png"
+dest_files=[ "res://.import/card_diamonds_J.png-59cdd1bd6890ad4976f8998dfef7f617.res" ]
+
+[params]
+
+atlas_file="res://assets/atlases/card_atlas.png"
+import_mode=0
+crop_to_region=true
+trim_alpha_border_from_region=true

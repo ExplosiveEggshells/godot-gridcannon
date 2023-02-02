@@ -1,0 +1,19 @@
+[remap]
+
+importer="texture_atlas"
+type="Texture"
+path="res://.import/card_hearts_02.png-33f3570ce6e7b9f7a6a1ea68f8f52121.res"
+group_file="res://assets/atlases/card_atlas.png"
+valid=true
+[deps]
+
+
+source_file="res://assets/sprites/cards/card_hearts_02.png"
+dest_files=[ "res://.import/card_hearts_02.png-33f3570ce6e7b9f7a6a1ea68f8f52121.res" ]
+
+[params]
+
+atlas_file="res://assets/atlases/card_atlas.png"
+import_mode=0
+crop_to_region=true
+trim_alpha_border_from_region=true
