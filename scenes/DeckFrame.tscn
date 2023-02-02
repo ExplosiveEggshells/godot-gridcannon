@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=2]
 
-[ext_resource path="res://scenes/DeckFrame.gd" type="Script" id=1]
+[ext_resource path="res://scripts/DeckFrame.gd" type="Script" id=1]
 [ext_resource path="res://assets/sprites/cards/card_back_frame.png" type="Texture" id=2]
 
 [node name="DeckFrame" type="TextureRect"]

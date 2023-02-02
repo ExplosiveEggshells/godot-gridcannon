@@ -8,16 +8,6 @@
 
 config_version=4
 
-_global_script_classes=[ {
-"base": "Node",
-"class": "CardSuits",
-"language": "GDScript",
-"path": "res://scripts/CardSuits.gd"
-} ]
-_global_script_class_icons={
-"CardSuits": ""
-}
-
 [application]
 
 config/name="Gridcannon"

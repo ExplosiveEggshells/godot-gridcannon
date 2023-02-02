@@ -23,6 +23,6 @@ func SetCard(var _suit : int, var _value : int, var royal_color = Color.lightgol
 	print("res://assets/sprites/cards/card_" + str(suit) + "_" + str(value) + ".png")
 	face_texture = load("res://assets/sprites/cards/card_" + str(suit) + "_" + str(value) + ".png")
 	back_texture = GameManager.card_back
-	texture = face_texture
+	$CardSprite.texture = face_texture
 
 	

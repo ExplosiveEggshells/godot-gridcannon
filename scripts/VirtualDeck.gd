@@ -9,8 +9,8 @@ var card_stack = []
 func _ready():
 	pass # Replace with function body.
 
-func PushCard(var card : Node2D):
-	card.position = position
+func PushCard(var card : Position2D):
+	card.desired_position = position
 	card_stack.push_back(card)
 
 
