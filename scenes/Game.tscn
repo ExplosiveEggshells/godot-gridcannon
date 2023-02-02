@@ -2,11 +2,11 @@
 
 [ext_resource path="res://assets/sprites/felt_bg.jpg" type="Texture" id=1]
 [ext_resource path="res://scripts/Game.gd" type="Script" id=2]
-[ext_resource path="res://scenes/Deck.tscn" type="PackedScene" id=3]
-[ext_resource path="res://scenes/Card.tscn" type="PackedScene" id=4]
+[ext_resource path="res://scenes/DeckFrame.tscn" type="PackedScene" id=3]
 [ext_resource path="res://resources/Roboto.tres" type="DynamicFont" id=5]
 [ext_resource path="res://resources/ThemeDefault.tres" type="Theme" id=6]
 [ext_resource path="res://icon.png" type="Texture" id=7]
+[ext_resource path="res://scenes/DeckGridContainer.gd" type="Script" id=8]
 
 [node name="Game" type="Control"]
 anchor_right = 1.0
@@ -16,7 +16,6 @@ script = ExtResource( 2 )
 __meta__ = {
 "_edit_lock_": true
 }
-card_scene = ExtResource( 4 )
 
 [node name="Camera2D" type="Camera2D" parent="."]
 anchor_mode = 0
@@ -34,7 +33,7 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="PaddedMargin" type="MarginContainer" parent="."]
+[node name="GameMargin" type="MarginContainer" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
 custom_constants/margin_right = 15
@@ -42,13 +41,13 @@ custom_constants/margin_top = 15
 custom_constants/margin_left = 15
 custom_constants/margin_bottom = 15
 
-[node name="GameSectionVBox" type="VBoxContainer" parent="PaddedMargin"]
+[node name="GameSectionVBox" type="VBoxContainer" parent="GameMargin"]
 margin_left = 15.0
 margin_top = 15.0
 margin_right = 753.0
 margin_bottom = 1009.0
 
-[node name="TopHBox" type="HBoxContainer" parent="PaddedMargin/GameSectionVBox"]
+[node name="TopHBox" type="HBoxContainer" parent="GameMargin/GameSectionVBox"]
 margin_right = 738.0
 margin_bottom = 164.0
 size_flags_horizontal = 3
@@ -56,14 +55,14 @@ size_flags_vertical = 3
 custom_constants/separation = 0
 alignment = 1
 
-[node name="UtilityPanel" type="PanelContainer" parent="PaddedMargin/GameSectionVBox/TopHBox"]
+[node name="UtilityPanel" type="PanelContainer" parent="GameMargin/GameSectionVBox/TopHBox"]
 margin_right = 369.0
 margin_bottom = 164.0
 rect_min_size = Vector2( 0, 128 )
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="ScoreCardsHBox" type="HBoxContainer" parent="PaddedMargin/GameSectionVBox/TopHBox/UtilityPanel"]
+[node name="ScoreCardsHBox" type="HBoxContainer" parent="GameMargin/GameSectionVBox/TopHBox/UtilityPanel"]
 margin_left = 2.0
 margin_top = 2.0
 margin_right = 367.0
@@ -71,7 +70,7 @@ margin_bottom = 162.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="Time" type="Label" parent="PaddedMargin/GameSectionVBox/TopHBox/UtilityPanel/ScoreCardsHBox"]
+[node name="Time" type="Label" parent="GameMargin/GameSectionVBox/TopHBox/UtilityPanel/ScoreCardsHBox"]
 margin_right = 120.0
 margin_bottom = 160.0
 rect_min_size = Vector2( 60, 0 )
@@ -82,7 +81,7 @@ text = "00:00"
 align = 1
 valign = 1
 
-[node name="TopperButton" type="TextureButton" parent="PaddedMargin/GameSectionVBox/TopHBox/UtilityPanel/ScoreCardsHBox"]
+[node name="TopperButton" type="TextureButton" parent="GameMargin/GameSectionVBox/TopHBox/UtilityPanel/ScoreCardsHBox"]
 margin_left = 124.0
 margin_right = 242.0
 margin_bottom = 160.0
@@ -93,7 +92,7 @@ texture_normal = ExtResource( 7 )
 expand = true
 stretch_mode = 5
 
-[node name="TopperButton2" type="TextureButton" parent="PaddedMargin/GameSectionVBox/TopHBox/UtilityPanel/ScoreCardsHBox"]
+[node name="TopperButton2" type="TextureButton" parent="GameMargin/GameSectionVBox/TopHBox/UtilityPanel/ScoreCardsHBox"]
 margin_left = 246.0
 margin_right = 365.0
 margin_bottom = 160.0
@@ -104,25 +103,23 @@ texture_normal = ExtResource( 7 )
 expand = true
 stretch_mode = 5
 
-[node name="ScoreCardsHBox2" type="HBoxContainer" parent="PaddedMargin/GameSectionVBox/TopHBox"]
+[node name="ScoreCardsHBox2" type="HBoxContainer" parent="GameMargin/GameSectionVBox/TopHBox"]
 margin_left = 369.0
 margin_right = 738.0
 margin_bottom = 164.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="Deck" parent="PaddedMargin/GameSectionVBox/TopHBox/ScoreCardsHBox2" instance=ExtResource( 3 )]
-modulate = Color( 1, 1, 1, 0.482353 )
+[node name="Deck" parent="GameMargin/GameSectionVBox/TopHBox/ScoreCardsHBox2" instance=ExtResource( 3 )]
 margin_right = 182.0
 margin_bottom = 164.0
 
-[node name="Deck2" parent="PaddedMargin/GameSectionVBox/TopHBox/ScoreCardsHBox2" instance=ExtResource( 3 )]
-modulate = Color( 1, 1, 1, 0.482353 )
+[node name="Deck2" parent="GameMargin/GameSectionVBox/TopHBox/ScoreCardsHBox2" instance=ExtResource( 3 )]
 margin_left = 186.0
 margin_right = 369.0
 margin_bottom = 164.0
 
-[node name="DeckGridContainer" type="GridContainer" parent="PaddedMargin/GameSectionVBox"]
+[node name="DeckGridContainer" type="GridContainer" parent="GameMargin/GameSectionVBox"]
 margin_top = 168.0
 margin_right = 738.0
 margin_bottom = 825.0
@@ -130,201 +127,50 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 size_flags_stretch_ratio = 4.0
 columns = 5
+script = ExtResource( 8 )
+deck_scene = ExtResource( 3 )
+default_deck_color = Color( 1, 1, 1, 0.803922 )
+royal_color_1 = Color( 0.545098, 0, 0, 0.803922 )
+royal_color_2 = Color( 0.627451, 0.12549, 0.941176, 0.803922 )
 
-[node name="Deck_1_1" parent="PaddedMargin/GameSectionVBox/DeckGridContainer" instance=ExtResource( 3 )]
-modulate = Color( 1, 0.286275, 0.286275, 0.482353 )
-margin_right = 145.0
-margin_bottom = 129.0
-
-[node name="Deck_1_2" parent="PaddedMargin/GameSectionVBox/DeckGridContainer" instance=ExtResource( 3 )]
-modulate = Color( 0.239216, 0.239216, 0.239216, 0.482353 )
-margin_left = 149.0
-margin_right = 294.0
-margin_bottom = 129.0
-
-[node name="Deck_1_3" parent="PaddedMargin/GameSectionVBox/DeckGridContainer" instance=ExtResource( 3 )]
-modulate = Color( 1, 0.286275, 0.286275, 0.482353 )
-margin_left = 298.0
-margin_right = 442.0
-margin_bottom = 129.0
-
-[node name="Deck_1_4" parent="PaddedMargin/GameSectionVBox/DeckGridContainer" instance=ExtResource( 3 )]
-modulate = Color( 0.239216, 0.239216, 0.239216, 0.482353 )
-margin_left = 446.0
-margin_right = 590.0
-margin_bottom = 129.0
-
-[node name="Deck_1_5" parent="PaddedMargin/GameSectionVBox/DeckGridContainer" instance=ExtResource( 3 )]
-modulate = Color( 1, 0.286275, 0.286275, 0.482353 )
-margin_left = 594.0
-margin_right = 738.0
-margin_bottom = 129.0
-
-[node name="Deck_2_1" parent="PaddedMargin/GameSectionVBox/DeckGridContainer" instance=ExtResource( 3 )]
-modulate = Color( 0.239216, 0.239216, 0.239216, 0.482353 )
-margin_top = 133.0
-margin_right = 145.0
-margin_bottom = 261.0
-
-[node name="Deck_2_2" parent="PaddedMargin/GameSectionVBox/DeckGridContainer" instance=ExtResource( 3 )]
-margin_left = 149.0
-margin_top = 133.0
-margin_right = 294.0
-margin_bottom = 261.0
-
-[node name="Deck_2_3" parent="PaddedMargin/GameSectionVBox/DeckGridContainer" instance=ExtResource( 3 )]
-margin_left = 298.0
-margin_top = 133.0
-margin_right = 442.0
-margin_bottom = 261.0
-
-[node name="Deck_2_4" parent="PaddedMargin/GameSectionVBox/DeckGridContainer" instance=ExtResource( 3 )]
-margin_left = 446.0
-margin_top = 133.0
-margin_right = 590.0
-margin_bottom = 261.0
-
-[node name="Deck_2_5" parent="PaddedMargin/GameSectionVBox/DeckGridContainer" instance=ExtResource( 3 )]
-modulate = Color( 0.239216, 0.239216, 0.239216, 0.482353 )
-margin_left = 594.0
-margin_top = 133.0
-margin_right = 738.0
-margin_bottom = 261.0
-
-[node name="Deck_3_1" parent="PaddedMargin/GameSectionVBox/DeckGridContainer" instance=ExtResource( 3 )]
-modulate = Color( 1, 0.286275, 0.286275, 0.482353 )
-margin_top = 265.0
-margin_right = 145.0
-margin_bottom = 393.0
-
-[node name="Deck12" parent="PaddedMargin/GameSectionVBox/DeckGridContainer" instance=ExtResource( 3 )]
-margin_left = 149.0
-margin_top = 265.0
-margin_right = 294.0
-margin_bottom = 393.0
-
-[node name="Deck13" parent="PaddedMargin/GameSectionVBox/DeckGridContainer" instance=ExtResource( 3 )]
-margin_left = 298.0
-margin_top = 265.0
-margin_right = 442.0
-margin_bottom = 393.0
-
-[node name="Deck14" parent="PaddedMargin/GameSectionVBox/DeckGridContainer" instance=ExtResource( 3 )]
-margin_left = 446.0
-margin_top = 265.0
-margin_right = 590.0
-margin_bottom = 393.0
-
-[node name="Deck15" parent="PaddedMargin/GameSectionVBox/DeckGridContainer" instance=ExtResource( 3 )]
-modulate = Color( 1, 0.286275, 0.286275, 0.482353 )
-margin_left = 594.0
-margin_top = 265.0
-margin_right = 738.0
-margin_bottom = 393.0
-
-[node name="Deck16" parent="PaddedMargin/GameSectionVBox/DeckGridContainer" instance=ExtResource( 3 )]
-modulate = Color( 0.239216, 0.239216, 0.239216, 0.482353 )
-margin_top = 397.0
-margin_right = 145.0
-margin_bottom = 525.0
-
-[node name="Deck17" parent="PaddedMargin/GameSectionVBox/DeckGridContainer" instance=ExtResource( 3 )]
-margin_left = 149.0
-margin_top = 397.0
-margin_right = 294.0
-margin_bottom = 525.0
-
-[node name="Deck18" parent="PaddedMargin/GameSectionVBox/DeckGridContainer" instance=ExtResource( 3 )]
-margin_left = 298.0
-margin_top = 397.0
-margin_right = 442.0
-margin_bottom = 525.0
-
-[node name="Deck19" parent="PaddedMargin/GameSectionVBox/DeckGridContainer" instance=ExtResource( 3 )]
-margin_left = 446.0
-margin_top = 397.0
-margin_right = 590.0
-margin_bottom = 525.0
-
-[node name="Deck20" parent="PaddedMargin/GameSectionVBox/DeckGridContainer" instance=ExtResource( 3 )]
-modulate = Color( 0.239216, 0.239216, 0.239216, 0.482353 )
-margin_left = 594.0
-margin_top = 397.0
-margin_right = 738.0
-margin_bottom = 525.0
-
-[node name="Deck21" parent="PaddedMargin/GameSectionVBox/DeckGridContainer" instance=ExtResource( 3 )]
-modulate = Color( 1, 0.286275, 0.286275, 0.482353 )
-margin_top = 529.0
-margin_right = 145.0
-margin_bottom = 657.0
-
-[node name="Deck22" parent="PaddedMargin/GameSectionVBox/DeckGridContainer" instance=ExtResource( 3 )]
-modulate = Color( 0.239216, 0.239216, 0.239216, 0.482353 )
-margin_left = 149.0
-margin_top = 529.0
-margin_right = 294.0
-margin_bottom = 657.0
-
-[node name="Deck23" parent="PaddedMargin/GameSectionVBox/DeckGridContainer" instance=ExtResource( 3 )]
-modulate = Color( 1, 0.286275, 0.286275, 0.482353 )
-margin_left = 298.0
-margin_top = 529.0
-margin_right = 442.0
-margin_bottom = 657.0
-
-[node name="Deck24" parent="PaddedMargin/GameSectionVBox/DeckGridContainer" instance=ExtResource( 3 )]
-modulate = Color( 0.239216, 0.239216, 0.239216, 0.482353 )
-margin_left = 446.0
-margin_top = 529.0
-margin_right = 590.0
-margin_bottom = 657.0
-
-[node name="Deck25" parent="PaddedMargin/GameSectionVBox/DeckGridContainer" instance=ExtResource( 3 )]
-modulate = Color( 1, 0.286275, 0.286275, 0.482353 )
-margin_left = 594.0
-margin_top = 529.0
-margin_right = 738.0
-margin_bottom = 657.0
-
-[node name="HBoxContainer" type="HBoxContainer" parent="PaddedMargin/GameSectionVBox"]
+[node name="BottomHBox" type="HBoxContainer" parent="GameMargin/GameSectionVBox"]
 margin_top = 829.0
 margin_right = 738.0
 margin_bottom = 994.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="ScoreCardsHBox" type="HBoxContainer" parent="PaddedMargin/GameSectionVBox/HBoxContainer"]
+[node name="ScoreCardsHBox" type="HBoxContainer" parent="GameMargin/GameSectionVBox/BottomHBox"]
 margin_right = 738.0
 margin_bottom = 165.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="Deck" parent="PaddedMargin/GameSectionVBox/HBoxContainer/ScoreCardsHBox" instance=ExtResource( 3 )]
+[node name="Deck" parent="GameMargin/GameSectionVBox/BottomHBox/ScoreCardsHBox" instance=ExtResource( 3 )]
 margin_right = 119.0
 margin_bottom = 165.0
 
-[node name="Deck2" parent="PaddedMargin/GameSectionVBox/HBoxContainer/ScoreCardsHBox" instance=ExtResource( 3 )]
+[node name="Deck2" parent="GameMargin/GameSectionVBox/BottomHBox/ScoreCardsHBox" instance=ExtResource( 3 )]
 margin_left = 123.0
 margin_right = 243.0
 margin_bottom = 165.0
 
-[node name="Deck3" parent="PaddedMargin/GameSectionVBox/HBoxContainer/ScoreCardsHBox" instance=ExtResource( 3 )]
+[node name="Deck3" parent="GameMargin/GameSectionVBox/BottomHBox/ScoreCardsHBox" instance=ExtResource( 3 )]
 margin_left = 247.0
 margin_right = 366.0
 margin_bottom = 165.0
 
-[node name="Deck4" parent="PaddedMargin/GameSectionVBox/HBoxContainer/ScoreCardsHBox" instance=ExtResource( 3 )]
+[node name="Deck4" parent="GameMargin/GameSectionVBox/BottomHBox/ScoreCardsHBox" instance=ExtResource( 3 )]
 margin_left = 370.0
 margin_right = 490.0
 margin_bottom = 165.0
 
-[node name="Deck5" parent="PaddedMargin/GameSectionVBox/HBoxContainer/ScoreCardsHBox" instance=ExtResource( 3 )]
+[node name="Deck5" parent="GameMargin/GameSectionVBox/BottomHBox/ScoreCardsHBox" instance=ExtResource( 3 )]
 margin_left = 494.0
 margin_right = 614.0
 margin_bottom = 165.0
 
-[node name="Deck6" parent="PaddedMargin/GameSectionVBox/HBoxContainer/ScoreCardsHBox" instance=ExtResource( 3 )]
+[node name="Deck6" parent="GameMargin/GameSectionVBox/BottomHBox/ScoreCardsHBox" instance=ExtResource( 3 )]
 margin_left = 618.0
 margin_right = 738.0
 margin_bottom = 165.0
