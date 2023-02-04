@@ -8,6 +8,22 @@
 
 config_version=4
 
+_global_script_classes=[ {
+"base": "Node",
+"class": "GameState",
+"language": "GDScript",
+"path": "res://scripts/GameState/GameState.gd"
+}, {
+"base": "Node",
+"class": "StateMachine",
+"language": "GDScript",
+"path": "res://scripts/GameState/StateMachine.gd"
+} ]
+_global_script_class_icons={
+"GameState": "",
+"StateMachine": ""
+}
+
 [application]
 
 config/name="Gridcannon"
@@ -16,7 +32,7 @@ config/icon="res://icon.png"
 
 [autoload]
 
-GameManager="*res://scripts/GameManager.gd"
+GameManager="*res://scenes/GameManager.tscn"
 
 [display]
 

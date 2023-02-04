@@ -84,7 +84,7 @@ text = "00:00"
 align = 1
 valign = 1
 
-[node name="TopperButton" type="TextureButton" parent="GameMargin/GameSectionVBox/TopHBox/UtilityPanel/ScoreCardsHBox"]
+[node name="TopBarButton" type="TextureButton" parent="GameMargin/GameSectionVBox/TopHBox/UtilityPanel/ScoreCardsHBox"]
 margin_left = 124.0
 margin_right = 242.0
 margin_bottom = 160.0
@@ -95,7 +95,7 @@ texture_normal = ExtResource( 7 )
 expand = true
 stretch_mode = 5
 
-[node name="TopperButton2" type="TextureButton" parent="GameMargin/GameSectionVBox/TopHBox/UtilityPanel/ScoreCardsHBox"]
+[node name="TopBarButton2" type="TextureButton" parent="GameMargin/GameSectionVBox/TopHBox/UtilityPanel/ScoreCardsHBox"]
 margin_left = 246.0
 margin_right = 365.0
 margin_bottom = 160.0
@@ -116,11 +116,16 @@ size_flags_vertical = 3
 [node name="Deck" parent="GameMargin/GameSectionVBox/TopHBox/ScoreCardsHBox2" instance=ExtResource( 3 )]
 margin_right = 182.0
 margin_bottom = 164.0
+deck_name = "main_deck"
+face_up_deck = false
+auto_register = true
 
 [node name="Deck2" parent="GameMargin/GameSectionVBox/TopHBox/ScoreCardsHBox2" instance=ExtResource( 3 )]
 margin_left = 186.0
 margin_right = 369.0
 margin_bottom = 164.0
+deck_name = "next_card"
+auto_register = true
 
 [node name="DeckGridContainer" type="GridContainer" parent="GameMargin/GameSectionVBox"]
 margin_top = 168.0
@@ -152,38 +157,43 @@ size_flags_vertical = 3
 [node name="Deck" parent="GameMargin/GameSectionVBox/BottomHBox/ScoreCardsHBox" instance=ExtResource( 3 )]
 margin_right = 119.0
 margin_bottom = 165.0
+deck_name = "ace_spade"
+auto_register = true
 
 [node name="Deck2" parent="GameMargin/GameSectionVBox/BottomHBox/ScoreCardsHBox" instance=ExtResource( 3 )]
 margin_left = 123.0
 margin_right = 243.0
 margin_bottom = 165.0
+deck_name = "ace_heart"
+auto_register = true
 
 [node name="Deck3" parent="GameMargin/GameSectionVBox/BottomHBox/ScoreCardsHBox" instance=ExtResource( 3 )]
 margin_left = 247.0
 margin_right = 366.0
 margin_bottom = 165.0
+deck_name = "ace_spade"
+auto_register = true
 
 [node name="Deck4" parent="GameMargin/GameSectionVBox/BottomHBox/ScoreCardsHBox" instance=ExtResource( 3 )]
 margin_left = 370.0
 margin_right = 490.0
 margin_bottom = 165.0
+deck_name = "ace_diamond"
+auto_register = true
 
 [node name="Deck5" parent="GameMargin/GameSectionVBox/BottomHBox/ScoreCardsHBox" instance=ExtResource( 3 )]
 margin_left = 494.0
 margin_right = 614.0
 margin_bottom = 165.0
+deck_name = "joker_red"
+auto_register = true
 
 [node name="Deck6" parent="GameMargin/GameSectionVBox/BottomHBox/ScoreCardsHBox" instance=ExtResource( 3 )]
 margin_left = 618.0
 margin_right = 738.0
 margin_bottom = 165.0
+deck_name = "joker_black"
+auto_register = true
 
 [node name="VirtualDeck" parent="." instance=ExtResource( 4 )]
 position = Vector2( 582, 311 )
-
-[node name="Timer" type="Timer" parent="."]
-wait_time = 0.1
-one_shot = true
-autostart = true
-
-[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
