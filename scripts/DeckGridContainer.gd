@@ -12,6 +12,7 @@ func _ready():
 
 func BuildGrid():
 	for y in 5:
+		GameManager.grid_decks[y] = []
 		for x in 5:
 			var card_color = default_deck_color
 			var deck_name = "GridDeck" + str(x) + "-" + str(y)
@@ -27,5 +28,5 @@ func BuildGrid():
 			
 			next_deck.name = deck_name
 			next_deck.deck_name = deck_name
-			GameManager.deck_dict[deck_name] = next_deck.virtual_deck
+			GameManager.grid_decks[y][x] = next_deck.virtual_deck
 			next_deck.UpdatePivot()

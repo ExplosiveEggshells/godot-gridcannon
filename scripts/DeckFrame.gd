@@ -8,13 +8,12 @@ export(Vector2) var default_size
 var virtual_deck
 
 func _ready():
-	connect("button_down", self, "ScaleReport")
 	virtual_deck = $VirtualDeck
 	
+	connect("button_down", virtual_deck, "on_deck_pressed")
 	$RepivotTimer.connect("timeout", self, "UpdatePivot")
-	connect("button_down", self, "TestControl")
-	
 	$RepivotTimer.start()
+	
 	virtual_deck.associated_frame = self
 	
 	if (auto_register):
@@ -31,5 +30,3 @@ func UpdatePivot():
 	var resized_scale = Vector2(rect_size.x / default_size.x, rect_size.y / default_size.y)
 	virtual_deck.global_scale = resized_scale
 
-func ScaleReport():
-	print(str(virtual_deck.global_scale))

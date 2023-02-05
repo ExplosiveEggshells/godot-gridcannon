@@ -9,5 +9,4 @@ func check_essential_references() -> bool:
 		return false
 	if (sm.game_root == null):
 		return false
-		
 	return true

@@ -1,5 +1,7 @@
 extends Position2D
 
+var follow_mouse = false
+
 var suit : int
 var value : int
 var face_texture : Resource
@@ -18,10 +20,15 @@ func _ready():
 	card_sprite = $CardSprite
 
 func _process(delta):
-	if (assigned_vdeck != null):
-		desired_position = assigned_vdeck.global_position
-		desired_scale = assigned_vdeck.global_scale
-		
+	if (!follow_mouse):
+		if (assigned_vdeck != null):
+			desired_position = assigned_vdeck.global_position
+			desired_scale = assigned_vdeck.global_scale
+	else:
+		desired_position = get_viewport().get_mouse_position()
+		if (!Input.is_action_pressed("pointer_select")):
+			follow_mouse = false
+			
 	if (position != desired_position):
 		position = position.linear_interpolate(desired_position, fly_lerp_rate * delta)
 		position = position.move_toward(desired_position, fly_budge)
