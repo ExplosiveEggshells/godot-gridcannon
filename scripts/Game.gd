@@ -19,7 +19,16 @@ func CreateCards():
 		
 		next_card.name = card_ID
 		next_card.position = next_spawn_pos
+		
+		if (value == 1 || suit == 5):
+			next_card.card_type = CardType.PLOY
+		elif (value >= 11):
+			next_card.card_type = CardType.ROYAL
+		else:
+			next_card.card_type = CardType.NUMBER
+		
 		GameManager.card_dict[card_ID] = next_card
+		
 	
 		value += 1
 		if (value > 13):

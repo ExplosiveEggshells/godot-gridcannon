@@ -7,6 +7,7 @@ var receptible = true		# Can a card be moved onto this deck by the player?
 
 var associated_frame : TextureRect
 var card_stack = []
+var deck_type
 
 func PushCard(var card : Position2D):
 	card.assigned_vdeck = self

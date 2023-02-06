@@ -6,6 +6,9 @@ extends Node
 
 var sm = null	# Parent State Machine
 
+func _on_card_placed(card, deck) -> void:
+	pass
+
 func handle_input(_event: InputEvent) -> void:
 	pass
 

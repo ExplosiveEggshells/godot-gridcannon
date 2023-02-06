@@ -16,6 +16,8 @@ var fly_budge = 0.05
 
 var assigned_vdeck = null
 var deck_scanner_area = null
+var card_type : CardType
+
 
 func _ready():
 	card_sprite = $CardSprite
