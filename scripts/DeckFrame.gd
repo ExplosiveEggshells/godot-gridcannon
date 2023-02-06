@@ -20,10 +20,11 @@ func _ready():
 		GameManager.deck_dict[deck_name] = virtual_deck
 
 func UpdatePivot():
-	var pivot_x = rect_size.x / 2
-	var pivot_y = rect_size.y / 2
-	rect_pivot_offset = Vector2(pivot_x, pivot_y)
-	virtual_deck.position = Vector2(pivot_x, pivot_y)
+	var new_pivot = Vector2(rect_size.x / 2, rect_size.y / 2)
+	rect_pivot_offset = new_pivot
+	virtual_deck.position = new_pivot
+	
+	$DropArea.position = new_pivot
 	
 	# Change the scale of the virtual deck to match the UI Scaling of the deck frame.
 	# Cards in the vdeck will read its scale and adjust themselves accordingly.

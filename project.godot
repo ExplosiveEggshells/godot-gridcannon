@@ -80,6 +80,11 @@ pointer_select={
  ]
 }
 
+[layer_names]
+
+2d_physics/layer_9="Card"
+2d_physics/layer_10="Deck"
+
 [physics]
 
 common/enable_pause_aware_picking=true

@@ -5,6 +5,7 @@ func _ready():
 
 func enter(_parms := {}) -> void:
 	sm.game_root.CreateCards()
+	sm.deck_container.BuildGrid()
 	for card_key in sm.card_dict:
 		sm.move_card_to_deck(GameManager.card_dict[card_key], GameManager.deck_dict["main_deck"])
 	

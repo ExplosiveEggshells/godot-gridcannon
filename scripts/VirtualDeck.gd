@@ -2,8 +2,8 @@ extends Position2D
 
 export(int) var base_z_index = 1
 
-var drawable = false		# Can a card be moved from this deck by the player?
-var receptible = false		# Can a card be moved onto this deck by the player?
+var drawable = true		# Can a card be moved from this deck by the player?
+var receptible = true		# Can a card be moved onto this deck by the player?
 
 var associated_frame : TextureRect
 var card_stack = []
@@ -46,4 +46,6 @@ func UpdateZIndices():
 		
 func on_deck_pressed() -> void:
 	if (drawable):
+		if (card_stack.empty()):
+			return
 		card_stack[-1].follow_mouse = true
