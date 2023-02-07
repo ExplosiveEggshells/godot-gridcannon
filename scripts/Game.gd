@@ -29,7 +29,6 @@ func CreateCards():
 		
 		GameManager.card_dict[card_ID] = next_card
 		
-	
 		value += 1
 		if (value > 13):
 			value = 1

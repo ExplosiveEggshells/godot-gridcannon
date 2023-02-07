@@ -32,7 +32,7 @@ func UpdatePivot():
 	# Change the scale of the virtual deck to match the UI Scaling of the deck frame.
 	# Cards in the vdeck will read its scale and adjust themselves accordingly.
 	var resized_scale = Vector2(rect_size.x / default_size.x, rect_size.y / default_size.y)
-	virtual_deck.global_scale = resized_scale
+	virtual_deck.scale = resized_scale
 
 func assign_deck_type() -> void:
 	match initial_deck_type:

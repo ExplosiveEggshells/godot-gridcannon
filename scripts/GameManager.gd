@@ -11,6 +11,13 @@ var grid_decks = []
 
 var deck_container = null
 var game_root = null
+var main_deck = null
+
+var rng : RandomNumberGenerator
+
+func _ready():
+	rng = RandomNumberGenerator.new()
+	rng.randomize()
 
 # Registers the card to a new deck, changing it's desired position and potentially
 # deregistering it from the previous deck if applicable. 
@@ -26,11 +33,23 @@ func draw_card_from_deck_to_deck(var source_deck, var target_deck):
 	
 	move_card_to_deck(popped_card, target_deck)
 
+func draw_all_cards_from_deck_to_deck(source_deck, target_deck) -> void:
+	while(!source_deck.card_stack.empty()):
+		draw_card_from_deck_to_deck(source_deck, target_deck)
+
+func get_decks_of_type(type) -> Array:
+	var decks = []
+	for y in 5:
+		for x in 5:
+			if (grid_decks[x][y].deck_type == type):
+				decks.append(grid_decks[x][y])
+	
+	return decks
+
 func clear_draw_receive_flags() -> void:
-	for deck in deck_dict.values:
-		deck.receptible = false
-		deck.drawable = false
-		
+	for deck in deck_dict.values():
+		deck.set_receptible(false)
+		deck.set_drawable(false)
 
 func _relay_card_placement(var card, var vdeck) -> void:
 	emit_signal("card_placed", card, vdeck)

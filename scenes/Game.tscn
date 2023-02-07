@@ -1,9 +1,8 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://assets/sprites/felt_bg.jpg" type="Texture" id=1]
 [ext_resource path="res://scripts/Game.gd" type="Script" id=2]
 [ext_resource path="res://scenes/DeckFrame.tscn" type="PackedScene" id=3]
-[ext_resource path="res://scenes/VirtualDeck.tscn" type="PackedScene" id=4]
 [ext_resource path="res://resources/Roboto.tres" type="DynamicFont" id=5]
 [ext_resource path="res://resources/ThemeDefault.tres" type="Theme" id=6]
 [ext_resource path="res://icon.png" type="Texture" id=7]
@@ -202,6 +201,3 @@ margin_bottom = 165.0
 deck_name = "ploy_5_2"
 initial_deck_type = 3
 auto_register = true
-
-[node name="VirtualDeck" parent="." instance=ExtResource( 4 )]
-position = Vector2( 582, 311 )

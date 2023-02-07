@@ -2,6 +2,7 @@ extends GameState
 
 func update(_delta: float) -> void:
 	if (check_essential_references()):
+		GameManager.main_deck = GameManager.deck_dict["main_deck"]
 		GameManager.transition_to("Setup")
 
 func check_essential_references() -> bool:

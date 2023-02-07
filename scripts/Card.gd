@@ -16,7 +16,7 @@ var fly_budge = 0.05
 
 var assigned_vdeck = null
 var deck_scanner_area = null
-var card_type : CardType
+var card_type
 
 
 func _ready():
@@ -30,6 +30,7 @@ func _process(delta):
 			desired_scale = assigned_vdeck.global_scale
 	else:
 		desired_position = get_viewport().get_mouse_position()
+		card_sprite.z_index = 60
 		if (!Input.is_action_pressed("pointer_select")):
 			end_mouse_follow()
 			
@@ -67,3 +68,4 @@ func end_mouse_follow():
 	
 	if (closest_receptible_deck != null):
 		GameManager.move_card_to_deck(self, closest_receptible_deck)
+		GameManager._relay_card_placement(self, closest_receptible_deck)

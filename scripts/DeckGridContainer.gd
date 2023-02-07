@@ -33,5 +33,9 @@ func BuildGrid():
 			next_deck.name = deck_name
 			next_deck.deck_name = deck_name
 			next_deck.virtual_deck.deck_type = deck_type
+			next_deck.virtual_deck.grid_x = x
+			next_deck.virtual_deck.grid_y = y
+			
 			GameManager.grid_decks[y].append(next_deck.virtual_deck)
+			GameManager.deck_dict[deck_name] = next_deck.virtual_deck
 			next_deck.UpdatePivot()

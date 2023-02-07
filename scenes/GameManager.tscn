@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://scripts/GameManager.gd" type="Script" id=1]
 [ext_resource path="res://scripts/GameState/InitState.gd" type="Script" id=2]
 [ext_resource path="res://scripts/GameState/SetupState.gd" type="Script" id=3]
+[ext_resource path="res://scripts/GameState/SetupRoyalsState.gd" type="Script" id=4]
 
 [node name="GameManager" type="Node"]
 script = ExtResource( 1 )
@@ -16,4 +17,13 @@ script = ExtResource( 3 )
 
 [node name="FirstDrawTimer" type="Timer" parent="Setup"]
 wait_time = 2.0
+one_shot = true
+
+[node name="DrawPauseTimer" type="Timer" parent="Setup"]
+wait_time = 0.5
+
+[node name="SetupRoyals" type="Node" parent="."]
+script = ExtResource( 4 )
+
+[node name="MoveRoyalsTimer" type="Timer" parent="SetupRoyals"]
 one_shot = true

@@ -40,6 +40,7 @@ func _physics_process(delta: float) -> void:
 # and calls its enter function.
 # It optionally takes a `msg` dictionary to pass to the next state's enter() function.
 func transition_to(target_state_name: String, msg: Dictionary = {}) -> void:
+	print(target_state_name)
 	if not has_node(target_state_name):
 		return
 
