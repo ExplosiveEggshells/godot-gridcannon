@@ -25,5 +25,9 @@ wait_time = 0.5
 [node name="SetupRoyals" type="Node" parent="."]
 script = ExtResource( 4 )
 
-[node name="MoveRoyalsTimer" type="Timer" parent="SetupRoyals"]
+[node name="EnterWaitTimer" type="Timer" parent="SetupRoyals"]
+one_shot = true
+
+[node name="DrawPauseTimer" type="Timer" parent="SetupRoyals"]
+wait_time = 0.5
 one_shot = true
