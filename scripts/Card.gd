@@ -48,7 +48,7 @@ func SetCard(var _suit : int, var _value : int):
 	back_texture = GameManager.card_back
 	$CardSprite.texture = face_texture
 
-func SetFaceUp(var is_face_up : bool):
+func set_face_up(var is_face_up : bool):
 	$CardSprite.texture = face_texture if is_face_up else back_texture
 
 func end_mouse_follow():

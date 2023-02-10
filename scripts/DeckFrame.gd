@@ -11,11 +11,13 @@ var virtual_deck
 func _ready():
 	virtual_deck = $VirtualDeck
 	
+	
 	connect("button_down", virtual_deck, "on_deck_pressed")
 	$RepivotTimer.connect("timeout", self, "UpdatePivot")
 	$RepivotTimer.start()
 	
 	virtual_deck.associated_frame = self
+	virtual_deck.face_up = face_up_deck
 	
 	if (auto_register):
 		GameManager.deck_dict[deck_name] = virtual_deck

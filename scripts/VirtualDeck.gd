@@ -13,6 +13,8 @@ var animation_player : AnimationPlayer
 var card_stack = []
 var deck_type
 
+var face_up = true
+
 func _ready():
 	associated_frame = get_parent()
 	animation_player = get_parent().get_node("AnimationPlayer")
@@ -21,6 +23,8 @@ func _ready():
 func PushCard(var card : Position2D):
 	card.assigned_vdeck = self
 	card_stack.push_back(card)
+	
+	card.set_face_up(face_up)
 	
 	UpdateZIndices()
 
