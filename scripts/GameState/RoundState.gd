@@ -49,7 +49,7 @@ func handle_number_placement(card):
 	
 	hand_deck.set_drawable(true)
 	
-	var received_deck = yield(GameManager, "card_placed")[0]
+	var received_deck = yield(GameManager, "card_placed")[1]
 	
 	if (received_deck != GameManager.grid_decks[2][2]):
 		royal_kill_attempt(received_deck)
@@ -81,4 +81,53 @@ func handle_ploy_draw(card):
 	draw_card()
 
 func royal_kill_attempt(seed_deck):
-	pass
+	try_payload(seed_deck, 1, 0)
+	try_payload(seed_deck, -1, 0)
+	try_payload(seed_deck, 0, 1)
+	try_payload(seed_deck, 0, -1)
+
+func try_payload(seed_deck, delta_x, delta_y):
+	var length = 0
+	var payload_strength = 0
+	var payload_type = 2
+	
+	var xi = seed_deck.grid_x + delta_x
+	var yi = seed_deck.grid_y + delta_y
+	
+	var last_card = null
+	
+	var current_deck = GameManager.grid_decks[xi][yi]
+	
+	while (current_deck.deck_type != DeckType.GRID_ROYAL):
+		if (current_deck.card_stack.empty()):
+			return
+		var card = current_deck.top_card()
+		payload_strength += card.value
+		
+		if (last_card != null):
+			payload_type = GameManager.get_card_suit_similarity(last_card, card)
+	
+		last_card = card
+		xi += delta_x
+		yi += delta_y
+		
+		current_deck = GameManager.grid_decks[xi][yi]
+		length += 1
+
+	if (current_deck.card_stack.empty() || !current_deck.top_card().alive):
+		return
+
+	if (length == 2):
+		var royal_card = current_deck.top_card()
+		print("Seed: " + str(seed_deck.grid_x) + ", " + str(seed_deck.grid_y))
+		print("Direction: " + str(delta_x) + ", " + str(delta_y))
+		print("Kill attempt vs " + royal_card.name + " | strength: " + str(payload_strength) + " | type: " + str(payload_type))
+		if (payload_type >= royal_card.value - 11 && payload_strength >= royal_card.value):
+			GameManager.kill_royal(royal_card)
+
+
+
+
+
+
+

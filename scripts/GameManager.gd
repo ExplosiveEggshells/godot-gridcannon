@@ -46,6 +46,14 @@ func get_decks_of_type(type) -> Array:
 	
 	return decks
 
+func get_cards_of_type(type) -> Array:
+	var cards = []
+	for card in card_dict.values():
+		if (card.card_type == type):
+			cards.append(card)
+			
+	return cards
+
 func clear_draw_receive_flags() -> void:
 	for deck in deck_dict.values():
 		deck.set_receptible(false)
@@ -53,7 +61,33 @@ func clear_draw_receive_flags() -> void:
 
 func _relay_card_placement(var card, var vdeck) -> void:
 	emit_signal("card_placed", card, vdeck)
+
+func kill_royal(royal_card):
+	royal_card.alive = false
+	royal_card.set_face_up(false)
 	
+	var royals = get_cards_of_type(CardType.ROYAL)
+	var all_dead = true
+	for royal in royals:
+		if (royal.alive):
+			all_dead = false
+			continue
+			
+	if (all_dead):
+		transition_to("Victory")
+
+# For two cards a and b, returns 2 if they are the same suit, 1 if they are
+# the same color, and 0 otherwise.
+func get_card_suit_similarity(a, b) -> int:
+	if (a.suit == b.suit):
+		return 2
+	elif ((a.suit == 1 || a.suit == 3) && (b.suit == 1 || b.suit == 3)):
+		return 1
+	elif ((a.suit == 2 || a.suit == 4) && (b.suit == 2 || b.suit == 4)):
+		return 1
+	
+	return 0
+
 ## PLACEMENT LOGIC ##
 func get_valid_number_placements(card) -> Array:
 	var number_decks = get_decks_of_type(DeckType.GRID_NUMBER)
