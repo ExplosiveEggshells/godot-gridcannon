@@ -96,7 +96,7 @@ func try_payload(seed_deck, delta_x, delta_y):
 	
 	var last_card = null
 	
-	var current_deck = GameManager.grid_decks[xi][yi]
+	var current_deck = GameManager.grid_decks[yi][xi]	# Grid is row major.
 	
 	while (current_deck.deck_type != DeckType.GRID_ROYAL):
 		if (current_deck.card_stack.empty()):
@@ -111,7 +111,7 @@ func try_payload(seed_deck, delta_x, delta_y):
 		xi += delta_x
 		yi += delta_y
 		
-		current_deck = GameManager.grid_decks[xi][yi]
+		current_deck = GameManager.grid_decks[yi][xi]
 		length += 1
 
 	if (current_deck.card_stack.empty() || !current_deck.top_card().alive):
@@ -123,7 +123,7 @@ func try_payload(seed_deck, delta_x, delta_y):
 		print("Direction: " + str(delta_x) + ", " + str(delta_y))
 		print("Kill attempt vs " + royal_card.name + " | strength: " + str(payload_strength) + " | type: " + str(payload_type))
 		if (payload_type >= royal_card.value - 11 && payload_strength >= royal_card.value):
-			GameManager.kill_royal(royal_card)
+			GameManager.kill_card(royal_card)
 
 
 

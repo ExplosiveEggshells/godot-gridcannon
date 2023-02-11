@@ -116,7 +116,7 @@ size_flags_vertical = 3
 margin_right = 182.0
 margin_bottom = 164.0
 deck_name = "main_deck"
-initial_deck_type = 4
+initial_deck_type = 3
 face_up_deck = false
 auto_register = true
 
@@ -125,7 +125,7 @@ margin_left = 186.0
 margin_right = 369.0
 margin_bottom = 164.0
 deck_name = "next_card"
-initial_deck_type = 4
+initial_deck_type = 3
 auto_register = true
 
 [node name="DeckGridContainer" type="GridContainer" parent="GameMargin/GameSectionVBox"]
@@ -159,7 +159,7 @@ size_flags_vertical = 3
 margin_right = 119.0
 margin_bottom = 165.0
 deck_name = "ploy_1_1"
-initial_deck_type = 3
+initial_deck_type = 2
 auto_register = true
 
 [node name="Deck2" parent="GameMargin/GameSectionVBox/BottomHBox/ScoreCardsHBox" instance=ExtResource( 3 )]
@@ -167,7 +167,7 @@ margin_left = 123.0
 margin_right = 243.0
 margin_bottom = 165.0
 deck_name = "ploy_2_1"
-initial_deck_type = 3
+initial_deck_type = 2
 auto_register = true
 
 [node name="Deck3" parent="GameMargin/GameSectionVBox/BottomHBox/ScoreCardsHBox" instance=ExtResource( 3 )]
@@ -175,7 +175,7 @@ margin_left = 247.0
 margin_right = 366.0
 margin_bottom = 165.0
 deck_name = "ploy_3_1"
-initial_deck_type = 3
+initial_deck_type = 2
 auto_register = true
 
 [node name="Deck4" parent="GameMargin/GameSectionVBox/BottomHBox/ScoreCardsHBox" instance=ExtResource( 3 )]
@@ -183,7 +183,7 @@ margin_left = 370.0
 margin_right = 490.0
 margin_bottom = 165.0
 deck_name = "ploy_4_1"
-initial_deck_type = 3
+initial_deck_type = 2
 auto_register = true
 
 [node name="Deck5" parent="GameMargin/GameSectionVBox/BottomHBox/ScoreCardsHBox" instance=ExtResource( 3 )]
@@ -191,7 +191,7 @@ margin_left = 494.0
 margin_right = 614.0
 margin_bottom = 165.0
 deck_name = "ploy_5_1"
-initial_deck_type = 3
+initial_deck_type = 2
 auto_register = true
 
 [node name="Deck6" parent="GameMargin/GameSectionVBox/BottomHBox/ScoreCardsHBox" instance=ExtResource( 3 )]
@@ -199,5 +199,5 @@ margin_left = 618.0
 margin_right = 738.0
 margin_bottom = 165.0
 deck_name = "ploy_5_2"
-initial_deck_type = 3
+initial_deck_type = 2
 auto_register = true

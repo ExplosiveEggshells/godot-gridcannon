@@ -38,11 +38,11 @@ func UpdatePivot():
 
 func assign_deck_type() -> void:
 	match initial_deck_type:
-		1:
+		0:
 			virtual_deck.deck_type = DeckType.GRID_NUMBER
-		2: 
+		1: 
 			virtual_deck.deck_type = DeckType.GRID_ROYAL
-		3:
+		2:
 			virtual_deck.deck_type = DeckType.PLOY
-		4:
+		3:
 			virtual_deck.deck_type = DeckType.STOCK

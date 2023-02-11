@@ -14,6 +14,7 @@ var card_stack = []
 var deck_type
 
 var face_up = true
+var resettable = false
 
 func _ready():
 	associated_frame = get_parent()
@@ -23,6 +24,14 @@ func _ready():
 func PushCard(var card : Position2D):
 	card.assigned_vdeck = self
 	card_stack.push_back(card)
+	
+	card.set_face_up(face_up)
+	
+	UpdateZIndices()
+
+func push_bottom_card(card : Position2D):
+	card.assigned_vdeck = self
+	card_stack.push_front(card)
 	
 	card.set_face_up(face_up)
 	
@@ -82,10 +91,14 @@ func set_drawable(state: bool) -> void:
 	drawable = state
 	update_animation_state()
 
+func set_resettable(state: bool) -> void:
+	resettable = state
+	update_animation_state()
+
 func update_animation_state() -> void:
 	if (drawable):
 		animation_player.play("drawable")
-	elif (receptible):
+	elif (receptible || resettable):
 		animation_player.play("receptible")
 	else:
 		animation_player.play("RESET")
@@ -95,3 +108,15 @@ func on_deck_pressed() -> void:
 		if (card_stack.empty()):
 			return
 		card_stack[-1].follow_mouse = true
+	
+	if (deck_type == DeckType.PLOY):
+		print("Hello. State is " + GameManager.state.name)
+		if (GameManager.state.name == "Round"):
+			print(str(GameManager.get_useable_ploys().size()))
+			if (GameManager.get_useable_ploys().size() != 0):
+				GameManager.transition_to("Ploy")
+				
+	if (resettable):
+		GameManager._relay_deck_reset(self)
+
+

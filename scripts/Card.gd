@@ -53,6 +53,10 @@ func SetCard(var _suit : int, var _value : int):
 func set_face_up(var is_face_up : bool):
 	$CardSprite.texture = face_texture if is_face_up else back_texture
 
+func kill_card():
+	alive = false
+	$CardSprite.modulate = Color.darkred
+
 func end_mouse_follow():
 	follow_mouse = false
 	var nearby_decks : Array = deck_scanner_area.get_overlapping_areas()

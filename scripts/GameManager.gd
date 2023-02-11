@@ -1,6 +1,7 @@
 extends StateMachine
 
 signal card_placed(card, vdeck)
+signal deck_reset(deck)
 
 var card_back = preload("res://assets/sprites/cards/card_back.png")
 
@@ -33,16 +34,28 @@ func draw_card_from_deck_to_deck(var source_deck, var target_deck):
 	
 	move_card_to_deck(popped_card, target_deck)
 
+func draw_card_deck_to_bottom_deck(source_deck, target_deck):
+	var popped_card = source_deck.PopCard(true)
+	
+	if (popped_card.assigned_vdeck != null):
+		popped_card.assigned_vdeck.RemoveCard(popped_card)
+		
+	target_deck.push_bottom_card(popped_card)
+
 func draw_all_cards_from_deck_to_deck(source_deck, target_deck) -> void:
 	while(!source_deck.card_stack.empty()):
 		draw_card_from_deck_to_deck(source_deck, target_deck)
 
 func get_decks_of_type(type) -> Array:
 	var decks = []
-	for y in 5:
-		for x in 5:
-			if (grid_decks[x][y].deck_type == type):
-				decks.append(grid_decks[x][y])
+	
+	for deck in deck_dict.values():
+		if (deck.deck_type == type):
+			decks.append(deck)
+#	for y in 5:
+#		for x in 5:
+#			if (grid_decks[x][y].deck_type == type):
+#				decks.append(grid_decks[x][y])
 	
 	return decks
 
@@ -58,13 +71,16 @@ func clear_draw_receive_flags() -> void:
 	for deck in deck_dict.values():
 		deck.set_receptible(false)
 		deck.set_drawable(false)
+		deck.set_resettable(false)
 
 func _relay_card_placement(var card, var vdeck) -> void:
 	emit_signal("card_placed", card, vdeck)
 
-func kill_royal(royal_card):
-	royal_card.alive = false
-	royal_card.set_face_up(false)
+func _relay_deck_reset(deck) -> void:
+	emit_signal("deck_reset", deck)
+
+func kill_card(card):
+	card.kill_card()
 	
 	var royals = get_cards_of_type(CardType.ROYAL)
 	var all_dead = true
@@ -87,6 +103,15 @@ func get_card_suit_similarity(a, b) -> int:
 		return 1
 	
 	return 0
+
+func get_useable_ploys() -> Array:
+	var useable_ploys = []
+	print("Ploy decks: " + str(get_decks_of_type(DeckType.PLOY).size()))
+	for deck in get_decks_of_type(DeckType.PLOY):
+		if (!deck.card_stack.empty() && deck.top_card().alive):
+			useable_ploys.append(deck)
+	
+	return useable_ploys
 
 ## PLACEMENT LOGIC ##
 func get_valid_number_placements(card) -> Array:
