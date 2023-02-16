@@ -52,10 +52,6 @@ func get_decks_of_type(type) -> Array:
 	for deck in deck_dict.values():
 		if (deck.deck_type == type):
 			decks.append(deck)
-#	for y in 5:
-#		for x in 5:
-#			if (grid_decks[x][y].deck_type == type):
-#				decks.append(grid_decks[x][y])
 	
 	return decks
 
@@ -204,3 +200,26 @@ func evaluate_royal_deck(deck, delta_x, delta_y):
 	if (target_deck.deck_type == DeckType.GRID_ROYAL && target_deck.card_stack.empty()):
 		return target_deck
 	return null
+
+## LOAD LOGIC ##
+func load_save():
+	var saved_game = SaveManager.load_game()
+	
+	for deck in saved_game.decks:
+		var vdeck = deck_dict[deck.deck_name]
+		for card_save in deck.card_saves:
+			var card = card_dict[card_save.id]
+			
+			if (card_save.alive):
+				card.revive_card()
+			else:
+				card.kill_card()
+			
+			move_card_to_deck(card, vdeck)
+	
+	transition_to(saved_game.game_state)
+
+
+
+
+

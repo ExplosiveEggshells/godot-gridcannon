@@ -37,6 +37,14 @@ func push_bottom_card(card : Position2D):
 	
 	UpdateZIndices()
 
+func clear_deck():
+	while(!card_stack.empty()):
+		var popped_card = card_stack.pop_back()
+		popped_card.assigned_vdeck = null
+		popped_card.z_index = 60
+	
+	UpdateZIndices()
+
 # Removes the top card from the deck and return its card ID.
 # If get_obj is true, the card node is returned instead.
 func PopCard(get_node : bool = false): 
@@ -61,7 +69,7 @@ func top_card() -> Position2D:
 func RemoveCard(var card):
 	card_stack.remove(card_stack.find(card))
 	card.assigned_vdeck = null
-	card.z_index = base_z_index + 1
+	card.z_index = 60
 	
 	UpdateZIndices()
 

@@ -57,6 +57,10 @@ func kill_card():
 	alive = false
 	$CardSprite.modulate = Color.darkred
 
+func revive_card():
+	alive = true
+	$CardSprite.modulate = Color.white
+
 func end_mouse_follow():
 	follow_mouse = false
 	var nearby_decks : Array = deck_scanner_area.get_overlapping_areas()

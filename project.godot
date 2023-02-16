@@ -10,14 +10,29 @@ config_version=4
 
 _global_script_classes=[ {
 "base": "Reference",
+"class": "CardSaveData",
+"language": "GDScript",
+"path": "res://scripts/CardSaveData.gd"
+}, {
+"base": "Reference",
 "class": "CardType",
 "language": "GDScript",
 "path": "res://scripts/CardType.gd"
 }, {
 "base": "Reference",
+"class": "DeckSaveData",
+"language": "GDScript",
+"path": "res://scripts/DeckSaveData.gd"
+}, {
+"base": "Reference",
 "class": "DeckType",
 "language": "GDScript",
 "path": "res://scripts/DeckType.gd"
+}, {
+"base": "Reference",
+"class": "GameSaveData",
+"language": "GDScript",
+"path": "res://scripts/GameSaveData.gd"
 }, {
 "base": "Node",
 "class": "GameState",
@@ -30,8 +45,11 @@ _global_script_classes=[ {
 "path": "res://scripts/GameState/StateMachine.gd"
 } ]
 _global_script_class_icons={
+"CardSaveData": "",
 "CardType": "",
+"DeckSaveData": "",
 "DeckType": "",
+"GameSaveData": "",
 "GameState": "",
 "StateMachine": ""
 }
@@ -45,7 +63,7 @@ config/icon="res://icon.png"
 [autoload]
 
 GameManager="*res://scenes/GameManager.tscn"
-SaveManager="*res://scenes/SaveManager.gd"
+SaveManager="*res://scripts/SaveManager.gd"
 
 [display]
 
